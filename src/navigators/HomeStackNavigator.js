@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
 import bottomTabNav from '../navigators/BottomTabNavigator'
 import home from '../screens/home'
+
 const HomeStack = createStackNavigator()
 
 function HomeStackNavigator(props) {

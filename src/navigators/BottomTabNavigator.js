@@ -34,7 +34,7 @@ export default function BottomTabNavigator({ navigation }) {
       />
       <Tab.Screen
         name='New and Hot'
-        component={fetch}
+        component={menu}
         options={{
           tabBarIcon: ({ focused }) => (
             <Icon
@@ -60,7 +60,7 @@ export default function BottomTabNavigator({ navigation }) {
       />
       <Tab.Screen
         name='Search'
-        component={menu}
+        component={fetch}
         options={{
           tabBarIcon: ({ focused }) => (
             <Icon

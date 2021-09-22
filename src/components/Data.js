@@ -4,9 +4,11 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function Data() {
   const [data, setData] = useState({})
-
+  const [search, setSearch] = useState('')
   useEffect(() => {
-    fetch('http://www.omdbapi.com/?i=tt3896198&apikey=4a456566&?t=guardains')
+    fetch(
+      'http://www.omdbapi.com/?i=tt3896198&apikey=4a456566&?t=40+year+old+virgin'
+    )
       .then(res => {
         if (res.ok) {
           return res
