@@ -2,8 +2,8 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import menu from '../screens/menu'
+import fetch from '../screens/fetch'
 import Icon from 'react-native-vector-icons/Ionicons'
-
 const Tab = createBottomTabNavigator()
 
 export default function BottomTabNavigator({ navigation }) {
@@ -34,7 +34,7 @@ export default function BottomTabNavigator({ navigation }) {
       />
       <Tab.Screen
         name='New and Hot'
-        component={menu}
+        component={fetch}
         options={{
           tabBarIcon: ({ focused }) => (
             <Icon
