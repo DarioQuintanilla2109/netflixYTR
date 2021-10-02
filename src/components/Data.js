@@ -12,13 +12,15 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 export default function Data() {
   const [data, setData] = useState({})
   const [search, setSearch] = useState('Useless Text')
+  let APIKEY = 'http://www.omdbapi.com/?i=tt3896198&apikey=7a8f9d22&t='
+  let userSearch = search
 
+  console.log(userSearch)
   useEffect(() => {
-    fetch(
-      'http://www.omdbapi.com/?i=tt3896198&apikey=7a8f9d22&t=40+year+old+virgin'
-    )
+    fetch()
       .then(res => {
         if (res.ok) {
+          // console.log(res.headers)
           return res
         }
       })
@@ -28,8 +30,7 @@ export default function Data() {
   // console.log(data)
 
   const getData = search => {
-    console.log(search)
-    fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=7a8f9d22&t=home`)
+    fetch(APIKEY + userSearch)
       .then(res => {
         if (res.ok) {
           return res
