@@ -8,10 +8,11 @@ import {
   Pressable,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 export default function Data() {
   const [data, setData] = useState({})
-  const [search, setSearch] = useState('Useless Text')
+  const [search, setSearch] = useState('Search')
   let APIKEY = 'http://www.omdbapi.com/?i=tt3896198&apikey=7a8f9d22&t='
   let userSearch = search
 
@@ -42,7 +43,23 @@ export default function Data() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TextInput style={styles.input} onChangeText={setSearch} value={search} />
+      <View style={styles.searchView}>
+        <Icon
+          style={styles.searchIcon}
+          name={'ios-search'}
+          color={'white'}
+          size={25}
+        />
+        <TextInput
+          clearTextOnFocus={true}
+          selectionColor={'red'}
+          style={styles.input}
+          onChangeText={setSearch}
+          value={search}
+          textAlign={'center'}
+          placeHolder={'Search2'}
+        />
+      </View>
       <Pressable style={styles.button} onPress={getData} />
       <Text> {data.Plot}</Text>
       <Image style={styles.Img} source={{ uri: data.Poster }} />
@@ -53,6 +70,14 @@ export default function Data() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'black',
+  },
+  searchIcon: {},
+  searchView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'black',
   },
   Img: {
     height: 140,
@@ -62,9 +87,13 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     borderWidth: 1,
+    borderRadius: 10,
     padding: 10,
     color: 'white',
     borderColor: 'white',
+    backgroundColor: 'gray',
+    justifyContent: 'center',
+    flex: 1,
   },
   button: {
     height: 100,
