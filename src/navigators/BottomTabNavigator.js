@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import menu from '../screens/menu'
 import fetch from '../screens/fetch'
 import Icon from 'react-native-vector-icons/Ionicons'
+import test from '../screens/test'
+
 const Tab = createBottomTabNavigator()
 
 export default function BottomTabNavigator({ navigation }) {
@@ -73,7 +75,7 @@ export default function BottomTabNavigator({ navigation }) {
       />
       <Tab.Screen
         name='Downloads'
-        component={menu}
+        component={test}
         options={{
           tabBarIcon: ({ focused }) => (
             <Icon

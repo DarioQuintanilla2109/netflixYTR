@@ -13,12 +13,15 @@ import Icon from 'react-native-vector-icons/Ionicons'
 export default function Data() {
   const [data, setData] = useState({})
   const [search, setSearch] = useState('Search')
+
   let APIKEY = 'http://www.omdbapi.com/?i=tt3896198&apikey=7a8f9d22&t='
+
   let userSearch = search
 
-  console.log(userSearch)
+  //console.log(userSearch)
+
   useEffect(() => {
-    fetch()
+    fetch(APIKEY + 'The Guilty')
       .then(res => {
         if (res.ok) {
           // console.log(res.headers)
@@ -30,6 +33,7 @@ export default function Data() {
   }, [])
   // console.log(data)
 
+  console.log(data)
   const getData = search => {
     fetch(APIKEY + userSearch)
       .then(res => {
@@ -44,12 +48,6 @@ export default function Data() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.searchView}>
-        <Icon
-          style={styles.searchIcon}
-          name={'ios-search'}
-          color={'white'}
-          size={25}
-        />
         <TextInput
           clearTextOnFocus={true}
           selectionColor={'red'}
@@ -61,12 +59,57 @@ export default function Data() {
         />
       </View>
       <Pressable style={styles.button} onPress={getData} />
-      <Text> {data.Plot}</Text>
-      <Image style={styles.Img} source={{ uri: data.Poster }} />
+      <View style={{ marginLeft: 10 }}>
+        <Text style={styles.titleText}>New Release</Text>
+        <View style={styles.movieDisplay}>
+          <View
+            style={{
+              flex: 2,
+            }}
+          >
+            <Image
+              style={{ height: 120, borderRadius: 10 }}
+              source={{ uri: data.Poster }}
+              resizeMode='contain'
+            />
+          </View>
+
+          <View
+            style={{
+              flex: 4,
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: 'black',
+            }}
+          >
+            <Text
+              style={{
+                color: 'white',
+                textAlign: 'center',
+                marginRight: '50%',
+                marginTop: '10%',
+                fontSize: 18,
+              }}
+            >
+              {data.Title}
+            </Text>
+          </View>
+          <View style={{ flex: 1, backgroundColor: 'black', marginRight: 20 }}>
+            <Icon
+              style={{
+                color: 'white',
+                marginTop: '50%',
+              }}
+              name={'ios-play'}
+              size={45}
+            />
+          </View>
+        </View>
+      </View>
     </SafeAreaView>
   )
 }
-
+// <Image style={styles.Img} source={{ uri: data.Poster }} />
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -100,5 +143,18 @@ const styles = StyleSheet.create({
     width: 100,
     backgroundColor: 'red',
     borderRadius: 100,
+  },
+  movieDisplay: {
+    flexDirection: 'row',
+  },
+  titleText: {
+    color: 'white',
+    fontSize: 18,
+  },
+  movieBox: {
+    width: 120,
+    height: 90,
+    borderRadius: 50,
+    backgroundColor: 'white',
   },
 })
